@@ -27,7 +27,7 @@ function showProductsList(products) {
 
 
 document.addEventListener("DOMContentLoaded",function () {
-    getJSONData("https://japceibal.github.io/emercado-api/cats_products/101.json").then(function(resultObj){
+    getJSONData(PRODUCTS_URL+localStorage.getItem("catID")+EXT_TYPE).then(function(resultObj){
         if (resultObj.status === "ok"){
             category = resultObj.data;
             document.getElementById("subtitle").innerHTML+= category.catName+".";
