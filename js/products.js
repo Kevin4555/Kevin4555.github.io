@@ -1,9 +1,13 @@
 let category;
+let min=undefined;
+let max=undefined;
 
 function showProductsList(products) {
+    document.getElementById("cat-list-container").innerHTML="";
     let text="";
     for (let product of products) {
-       text=`
+        if ((!(parseInt(product.cost) < min)) && (!(parseInt(product.cost) > max))) {
+        text=`
             <div class="list-group-item ">
             <div class="row">
                 <div class="col-3">
@@ -19,7 +23,8 @@ function showProductsList(products) {
             </div>
         </div>
         `
-        document.getElementById("cat-list-container").innerHTML+=text;
+        document.getElementById("cat-list-container").innerHTML+=text;    
+        }
     }
 }
 
@@ -32,6 +37,28 @@ document.addEventListener("DOMContentLoaded",function () {
             category = resultObj.data;
             document.getElementById("subtitle").innerHTML+= category.catName+".";
             showProductsList(category.products);
-        };
+
+            document.getElementById("filtrarProd").addEventListener("click",function(){
+                min=parseInt(document.getElementById("filtrominP").value);
+                max=parseInt(document.getElementById("filtromaxP").value);
+                showProductsList(category.products);
+            })
+            document.getElementById("limpiarProd").addEventListener("click",function(){
+                document.getElementById("filtrominP").value="";
+                document.getElementById("filtromaxP").value="";
+                min=undefined;
+                max=undefined;
+                showProductsList(category.products);
+            })
+            document.getElementById("asdP").addEventListener("click",function () {
+                showProductsList(category.products.sort(function(a, b){return parseInt(a.cost)-parseInt(b.cost)}));
+            })
+            document.getElementById("desP").addEventListener("click",function () {
+                showProductsList(category.products.sort(function(a, b){return parseInt(b.cost)-parseInt(a.cost)}));
+            })
+            document.getElementById("desR").addEventListener("click",function () {
+                showProductsList(category.products.sort(function(a, b){return parseInt(b.soldCount)-parseInt(a.soldCount)}));
+            })
         
+        };
     })});

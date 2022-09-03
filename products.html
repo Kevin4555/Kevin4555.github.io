@@ -30,7 +30,7 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
+          <li id="navUser" class="nav-item">
           </li>
         </ul>
       </div>
@@ -41,6 +41,37 @@
       <h2>Productos</h2>
       <p class="lead" id="subtitle">Verás aquí todos los productos de la categoría </p>
     </div>
+    <div class="container">
+      <div class="row">
+        <div class="col text-end">
+          <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
+            <button id="asdP">ASD P.</button>
+            <button id="desP">Des P.</button>
+            <button id="desR">Des R.</button>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
+          <div class="row container p-0 m-0">
+            <div class="col">
+              <p class="font-weight-normal text-end my-2">Precio</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number" placeholder="min." id="filtrominP">
+            </div>
+            <div class="col">
+              <input class="form-control" type="number" placeholder="máx." id="filtromaxP">
+            </div>
+            <div class="col-3 p-0">
+              <div class="btn-group" role="group">
+                <button class="btn btn-light btn-block" id="filtrarProd">Filtrar</button>
+                <button class="btn btn-link btn-sm" id="limpiarProd">Limpiar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     <div class="container">
       <div class="row">
         <div class="list-group" id="cat-list-container">

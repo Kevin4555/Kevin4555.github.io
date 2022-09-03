@@ -39,3 +39,12 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+document.addEventListener("DOMContentLoaded",function(){
+  if (localStorage.getItem("usuario_name")) {
+    document.getElementById("navUser").innerHTML=`<p class="nav-link active">${localStorage.getItem("usuario_name")}</p>`;
+  }else{
+    document.getElementById("navUser").innerHTML=`<a class="nav-link" href="index.html">Ingresar</a>`;
+  }
+  
+})

@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded",function() {
 document.getElementById("buttonlogin").addEventListener("click",function(){
     if (document.getElementById("maillogin").value!="" && document.getElementById("passwordlogin").value!=""){
-    window.location.href ="frontpage.html";
+        localStorage.setItem("usuario_name",document.getElementById("maillogin").value);
+        window.location.href ="frontpage.html";
     }     
 })
 });
