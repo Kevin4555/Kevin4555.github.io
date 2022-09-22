@@ -42,9 +42,24 @@ let getJSONData = function(url){
 
 document.addEventListener("DOMContentLoaded",function(){
   if (localStorage.getItem("usuario_name")) {
-    document.getElementById("navUser").innerHTML=`<p class="nav-link active">${localStorage.getItem("usuario_name")}</p>`;
+    document.getElementById("navUser").innerHTML=`
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarUserDropdownoptions" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          ${localStorage.getItem("usuario_name")}
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarUserDropdownoptions">
+          <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
+          <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+          <li><a class="dropdown-item" href="#" onclick="cerrarsesion()">Cerrar sesión</a></li>
+        </ul>
+      </li>
+      `;
   }else{
-    document.getElementById("navUser").innerHTML=`<a class="nav-link" href="index.html">Ingresar</a>`;
+    document.getElementById("navUser").innerHTML=`<a class="nav-link" href="index.html">Iniciar Sesion</a>`;
   }
-  
 })
+
+function cerrarsesion(){
+  localStorage.removeItem("usuario_name");
+  window.location="login.html";
+}
