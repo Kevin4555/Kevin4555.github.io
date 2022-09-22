@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded",function(){
       </li>
       `;
   }else{
-    document.getElementById("navUser").innerHTML=`<a class="nav-link" href="index.html">Iniciar Sesion</a>`;
+    document.getElementById("navUser").innerHTML=`<a class="nav-link" href="login.html">Iniciar Sesion</a>`;
   }
 })
 
