@@ -35,7 +35,7 @@ function Showdata(product) {
     document.getElementById("ProdR").innerHTML="";
     for (let element of product.relatedProducts) {
     let pr=`
-    <div class="card " onclick=Cambiarprod(${element.id})>
+    <div class="card" onclick=Cambiarprod(${element.id})>
         <img src="${element.image}" class="card-img-top" alt="image-${element.name}">
         <div class="card-body">
             <h5 class="card-title">${element.name}</h5>

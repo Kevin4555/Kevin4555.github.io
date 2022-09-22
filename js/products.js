@@ -1,6 +1,7 @@
 let category;
 let min=undefined;
 let max=undefined;
+let searchtext="";
 
 function Reditigirainfo(productoid) {
     localStorage.setItem("productoID",productoid);
@@ -12,7 +13,8 @@ function showProductsList(products) {
     let text="";
     for (let product of products) {
         if ((!(parseInt(product.cost) < min)) && (!(parseInt(product.cost) > max))) {
-        text=`
+            if ((product.name.toLowerCase().includes(searchtext))||(product.description.toLowerCase().includes(searchtext))) {
+             text=`
             <div class="list-group-item list-group-item-action cursor-active" onclick=Reditigirainfo(${product.id})>
             <div class="row">
                 <div class="col-3">
@@ -27,8 +29,9 @@ function showProductsList(products) {
                 </div>
             </div>
         </div>
-        `
+        `;
         document.getElementById("cat-list-container").innerHTML+=text;    
+            }
         }
     }
 }
@@ -43,6 +46,11 @@ document.addEventListener("DOMContentLoaded",function () {
                 category = resultObj.data;
                 document.getElementById("subtitle").innerHTML+= category.catName+".";
                 showProductsList(category.products);
+
+                document.getElementById("searchProd").addEventListener("input",function(){
+                    searchtext=document.getElementById("searchProd").value.toLowerCase();
+                    showProductsList(category.products);
+                })
     
                 document.getElementById("filtrarProd").addEventListener("click",function(){
                     min=parseInt(document.getElementById("filtrominP").value);
@@ -54,6 +62,8 @@ document.addEventListener("DOMContentLoaded",function () {
                     document.getElementById("filtromaxP").value="";
                     min=undefined;
                     max=undefined;
+                    searchtext="";
+                    document.getElementById("searchProd").value="";
                     showProductsList(category.products);
                 })
                 document.getElementById("asdP").addEventListener("click",function () {

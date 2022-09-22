@@ -45,42 +45,39 @@
       <div class="row">
         <div class="col text-end">
           <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
-            <button id="asdP">ASD P.</button>
-            <button id="desP">Des P.</button>
-            <button id="desR">Des R.</button>
+            <button type="button" class="btn btn-outline-dark" id="asdP"><i
+                class='fas fa-sort-amount-down'></i>$</button>
+            <button type="button" class="btn btn-outline-dark" id="desP"><i class='fas fa-sort-amount-up'></i>$</button>
+            <button type="button" class="btn btn-outline-dark" id="desR"><i
+                class='fas fa-sort-amount-down'></i>Rel</button>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col offset col-md-12 mb-1 container">
-          <div class="row container p-0 m-0">
-            <div class="col text-end">
-              <input class="form-control" type="search" id="searchProd">
-            </div>
-            <div class="col">
-              <p class="font-weight-normal text-end my-2">Precio</p>
-            </div>
-            <div class="col">
-              <input class="form-control" type="number" placeholder="min." id="filtrominP">
-            </div>
-            <div class="col">
-              <input class="form-control" type="number" placeholder="máx." id="filtromaxP">
-            </div>
-            <div class="col-3 p-0">
-              <div class="btn-group" role="group">
-                <button class="btn btn-light btn-block" id="filtrarProd">Filtrar</button>
-                <button class="btn btn-link btn-sm" id="limpiarProd">Limpiar</button>
-              </div>
-            </div>
+      <div class="row p-0 m-0">
+        <div class="col input-group">
+          <div class="input-group-text">
+            <i class='fas fa-search'></i>
+          </div>
+          <input class="form-control" type="search" id="searchProd" placeholder="Busca...">
+        </div>
+        <div class="col input-group">
+          <span class="input-group-text">Precio</span>
+          <input class="form-control" type="number" min="0" placeholder="min." id="filtrominP">
+          <input class="form-control" type="number" min="0" placeholder="máx." id="filtromaxP">
+        </div>
+        <div class="col-2">
+          <div class="btn-group" role="group">
+            <button class="btn btn-outline-dark" id="filtrarProd">Filtrar</button>
+            <button class="btn btn-outline-dark" id="limpiarProd">Limpiar</button>
           </div>
         </div>
       </div>
-    <div class="container">
-      <div class="row">
-        <div class="list-group" id="cat-list-container">
+      <div class="container">
+        <div class="row">
+          <div class="list-group" id="cat-list-container">
+          </div>
         </div>
-      </div> 
-    </div>
+      </div>
   </main>
   <footer class="text-muted">
     <div class="container">
