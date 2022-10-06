@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded",function(){
         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarUserDropdownoptions">
           <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
           <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
-          <li><a class="dropdown-item" href="#" onclick="cerrarsesion()">Cerrar sesión</a></li>
+          <li><a class="dropdown-item" onclick="cerrarsesion()">Cerrar sesión</a></li>
         </ul>
       </li>
       `;
