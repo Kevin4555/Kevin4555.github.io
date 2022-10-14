@@ -37,9 +37,17 @@
     </div>
   </nav>
   <main>
-    <div class="text-center p-2">
-      <h3 id="tituloprod"></h3>
+    <div class="container">
+      <div class="row mt-2 justify-content-end">
+        <div class="col-4 text-center p-2">
+          <h2 id="tituloprod"></h2>
+        </div>
+        <div class="col-4 align-items-end">
+          <button type="button" class="btn btn-success" id="btncomprar">Comprar</button>
+        </div>
+      </div>
     </div>
+
     <div class="container-fluid">
       <div class="row">
         <div class="col-6 text-center gx-0">
@@ -97,39 +105,39 @@
 
       </div>
       <div class="text-start p-2">
-      <h3>Comentar</h3>
-    </div>
-    <div class="row ms-2">
-      <div class="col-3 text-start">
-        <label for="textcoment">Tu Opinion:</label>
-        <div class="input-group col-3">
-          <textarea class="form-control" id="textcomment"></textarea>
-        </div>
-        <label for="scorecomet">Tu Puntuacion:</label>
-        <div class="input-group">
-          <select class="form-select" name="score" id="scorecommet">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-        </div>
-        <button type="button" class="btn btn-primary" id="btncomment">Enviar</button>
+        <h3>Comentar</h3>
       </div>
-    </div>
-    <div class="text-start p-2">
-      <h3>Productos Relacionados</h3>
-    </div>
-    <div class="row ps-2">
-      <div class="col-6 col-lg-4 col-md-8 col-sm-6">
-        <div class="card-group" id="ProdR">
+      <div class="row ms-2">
+        <div class="col-3 text-start">
+          <label for="textcoment">Tu Opinion:</label>
+          <div class="input-group col-3">
+            <textarea class="form-control" id="textcomment"></textarea>
+          </div>
+          <label for="scorecomet">Tu Puntuacion:</label>
+          <div class="input-group">
+            <select class="form-select" name="score" id="scorecommet">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <button type="button" class="btn btn-primary" id="btncomment">Enviar</button>
+        </div>
+      </div>
+      <div class="text-start p-2">
+        <h3>Productos Relacionados</h3>
+      </div>
+      <div class="row ps-2">
+        <div class="col-6 col-lg-4 col-md-8 col-sm-6">
+          <div class="card-group" id="ProdR">
 
+          </div>
         </div>
       </div>
     </div>
-    </div>
-    
+
   </main>
   <footer class="text-muted">
     <div class="container">

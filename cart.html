@@ -36,9 +36,84 @@
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+    <div class="container align-content-center">
+      <div class="col p-2 text-center">
+        <h2 id="titule">Carrito de </h2>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-md-8 offset-md-1 col-lg-8 offset-lg-2">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Costo</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Subtotal</th>
+              </tr>
+            </thead>
+            <tbody id="listacarrito" class="table-group-divider">
+
+
+            </tbody>
+          </table>
+          <hr>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-5">
+          <div class="row justify-content-end">
+            <div class="col-7">
+              <h3 cla>Tipo de Envío</h3>
+            </div>
+            <div class="col-7">
+              <input class="form-check-input" type="radio" name="tipodeenviocheck" id="tipodeenviocheck1">
+              <label class="form-check-label" for="tipodeenviocheck1">
+                Premium 2-5 Dias(15%)
+              </label>
+            </div>
+            <div class="col-7">
+              <input class="form-check-input" type="radio" name="tipodeenviocheck" id="tipodeenviocheck2" checked>
+              <label class="form-check-label" for="tipodeenviocheck2">
+                Express 5-8 Dias(7%)
+              </label>
+            </div>
+            <div class="col-7">
+              <input class="form-check-input" type="radio" name="tipodeenviocheck" id="tipodeenviocheck3" checked>
+              <label class="form-check-label" for="tipodeenviocheck3">
+                Standard 12-15 Dias(5%)
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="col p-2 text end">
+            <h3>Dirección de Envío</h3>
+            <div class="row">
+              <div class="col-6">
+                <label for="calle_envio">Calle :</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" id="calle_envio">
+                </div>
+              </div>
+              <div class="col-6">
+                <label for="num_envio">Número :</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" id="num_envio">
+                </div>
+              </div>
+              <div class="col-6">
+                <label for="esq_envio">Esquina:</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" id="esq_envio">
+                </div>
+              </div>
+
+
+            </div>
+
+          </div>
+        </div>
       </div>
     </div>
   </main>

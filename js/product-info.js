@@ -1,7 +1,10 @@
+let producto;
+
 function Cambiarprod(id) {
     localStorage.setItem("productoID",id);
     window.location="product-info.html";
 }
+
 function Showdata(product) {
     document.getElementById("tituloprod").innerHTML=product.name;
     let currency=product.currency;
@@ -72,8 +75,7 @@ document.addEventListener("DOMContentLoaded",function(){
     if (localStorage.getItem("productoID")) {
         getJSONData(PRODUCT_INFO_URL+localStorage.getItem("productoID")+EXT_TYPE).then(function(resultObj){
             if(resultObj.status === "ok"){
-                let producto=resultObj.data;
-                console.log(producto)
+                producto=resultObj.data;
                 Showdata(producto);
             }
         }).then(function(){
@@ -91,11 +93,35 @@ document.addEventListener("DOMContentLoaded",function(){
                 }
             }
         })
-        })
-        document.getElementById("btncomment").addEventListener("click",function(){
+        }).then(function(){
+          document.getElementById("btncomment").addEventListener("click",function(){
             document.getElementById("textcomment").value="";
             document.getElementById("scorecommet").selectedIndex=0;
         })
+        document.getElementById("btncomprar").addEventListener("click",function() {
+            if (localStorage.getItem("cart_user")){
+            let cant=1;
+            let carro=JSON.parse(localStorage.getItem("cart_user"));
+            if (carro[producto.id]) {
+                alert("Ya esta en el Carrito");
+                window.location="cart.html";
+            }else{
+                carro[producto.id]={
+                    name: producto.name,
+                    currency: producto.currency,
+                    cost: producto.cost,
+                    cantidad: cant,
+                    imagen: producto.images[0]
+                };
+                localStorage.setItem("cart_user",JSON.stringify(carro));
+                window.location="cart.html";
+            }
+            }else{
+                alert("Tiene que Iniciar Sesion");
+            }
+        })
+        })
+        
     }
     else {
         alert("No selecciono ningún Producto");

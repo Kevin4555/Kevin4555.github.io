@@ -61,5 +61,6 @@ document.addEventListener("DOMContentLoaded",function(){
 
 function cerrarsesion(){
   localStorage.removeItem("usuario_name");
+  localStorage.removeItem("cart_user");
   window.location="login.html";
 }
