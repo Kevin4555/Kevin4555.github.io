@@ -98,12 +98,13 @@ document.addEventListener("DOMContentLoaded",function(){
             document.getElementById("textcomment").value="";
             document.getElementById("scorecommet").selectedIndex=0;
         })
+        //Boton Comprar
         document.getElementById("btncomprar").addEventListener("click",function() {
             if (localStorage.getItem("cart_user")){
             let cant=1;
             let carro=JSON.parse(localStorage.getItem("cart_user"));
             if (carro[producto.id]) {
-                alert("Ya esta en el Carrito");
+                alert("Este producto ya esta en el Carrito,puedes variar la cantidad a tu gusto");
                 window.location="cart.html";
             }else{
                 carro[producto.id]={

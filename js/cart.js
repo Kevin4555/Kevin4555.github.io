@@ -12,11 +12,9 @@ function CarritoVacio() {
 }
 function ShowProductCart(cart) {
     listaprodcart.innerHTML = "";
-    console.log(listaprodcart);
     if (Object.keys(cart).length === 0) {
         CarritoVacio();
     } else {
-        console.log(listaprodcart);
         for (let prod in cart) {
             let text = `
         <tr>
@@ -27,7 +25,7 @@ function ShowProductCart(cart) {
             <input maxlength="3" type="number" name="${prod}" value=${cart[prod].cantidad}>
         </td>
         <td class="border-dark fw-bold">${cart[prod].currency}<br>${(cart[prod].cost * cart[prod].cantidad)}</td>
-        <td class="pt-3 border-bottom-0"><i class='fas fa-times-circle' onclick="eliminarprod(${prod})" style='font-size:25px;color:red'></i></td>
+        <td class="pt-3 border-bottom-0"><i class='fas fa-times-circle cursor-active' onclick="eliminarprod(${prod})" style='font-size:25px;color:red'></i></td>
         </tr>
         `;
             listaprodcart.innerHTML += text;
@@ -38,7 +36,7 @@ function ShowProductCart(cart) {
                     if (input.value < 1) {
                         input.value = 1;
                     }
-                    //Voy a al padre del padre,en este caso el "tr" para luego codificar el "td" especifico;
+                    //Voy a al padre del padre,en este caso el "tr" para luego modificar el "td" especifico;
                     input.parentNode.parentNode.childNodes[9].innerHTML = `${cart[input.name].currency}<br>${(cart[input.name].cost * input.value)}`;
                     cart[input.name].cantidad = input.value;
                     localStorage.setItem("cart_user", JSON.stringify(cart));

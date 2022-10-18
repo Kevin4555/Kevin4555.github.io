@@ -5,6 +5,6 @@ document.getElementById("buttonlogin").addEventListener("click",function(){
         let carrito={};
         localStorage.setItem("cart_user",JSON.stringify(carrito));
         window.location.href ="index.html";
-    }     
+    }
 })
 });
