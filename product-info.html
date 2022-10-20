@@ -43,11 +43,27 @@
           <h2 id="tituloprod"></h2>
         </div>
         <div class="col-4 align-items-end">
-          <button type="button" class="btn btn-success" id="btncomprar">Comprar</button>
+          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#comprarModal" id="btncomprar_modal">Comprar</button>
         </div>
       </div>
     </div>
-
+    <div class="modal fade" id="comprarModal" tabindex="-1" aria-labelledby="comprarModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="comprarModalLabel">Comprar</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="comparmodal_body">
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" id="btncomprar" class="btn btn-success">Comprar</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="container-fluid">
       <div class="row">
         <div class="col-6 text-center gx-0">
