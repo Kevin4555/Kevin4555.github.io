@@ -71,7 +71,8 @@ function ShowProductCart(cart) {
         <td class="border-dark">${cart[prod].name}</td>
         <td class="border-dark">${cart[prod].currency}<br>${formatcost}</td>
         <td class="border-dark">
-            <input maxlength="3" type="number" name="${prod}" value=${cart[prod].cantidad}>
+            <input maxlength="3" type="number" name="${prod}" value=${cart[prod].cantidad} style="
+            width: 83px;">
         </td>
         <td class="border-dark fw-bold">${cart[prod].currency}<br>${formatsubt}</td>
         <td class="pt-3 border-bottom-0"><i class='fas fa-times-circle cursor-active' onclick="eliminarprod(${prod})" style='font-size:25px;color:red'></i></td>
