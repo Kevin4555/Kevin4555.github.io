@@ -14,7 +14,7 @@ function Showdata(product) {
         currency = "$"
     }
     //Agrego los datos
-    document.getElementById("precioprod").innerHTML = currency + product.cost;
+    document.getElementById("precioprod").innerHTML = currency +" "+ Intl.NumberFormat('es-UY').format(product.cost);
     document.getElementById("descprod").innerHTML = product.description;
     document.getElementById("categprod").innerHTML = product.category;
     document.getElementById("cantvendprod").innerHTML = product.soldCount;
@@ -108,12 +108,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     let carro = JSON.parse(localStorage.getItem("cart_user"));
                     if (carro[producto.id]) {
                         modalcomp.innerHTML = "Este producto ya esta en el <b>carrito</b>, puede variar la cantidad a su gusto allí.";
-                        btncomprar.innerHTML = `<i class='fas fa-shopping-cart' style='font-size:24px' alt="carrito"></i>`;
+                        btncomprar.innerHTML = `<i class='fas fa-shopping-cart' style='font-size:24px' aria-label="carrito"></i>`;
                     } else {
                         btncomprar.innerHTML = "Comprar";
                         modalcomp.innerHTML =`
                         <input maxlength="3" type="number" name="inputcomprar" value=1 id="comprarinputmodal">
-                        <h4 class="float-end bold" id="subtotcom">SubTotal: ${producto.currency} ${producto.cost}</h4>
+                        <h4 class="float-end bold" id="subtotcom">SubTotal: ${producto.currency} ${Intl.NumberFormat('es-UY').format(producto.cost)}</h4>
                         `;
                         let inputcom=document.getElementById("comprarinputmodal");
                         inputcom.addEventListener("input",function(){
@@ -121,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 if (inputcom.value < 1) {
                                     inputcom.value = 1;
                                 }
-                                document.getElementById("subtotcom").innerHTML=`SubTotal: ${producto.currency} ${producto.cost*inputcom.value}`;
+                                document.getElementById("subtotcom").innerHTML=`SubTotal: ${producto.currency} ${Intl.NumberFormat('es-UY').format(producto.cost*inputcom.value)}`;
                             }
                         })
                     }
