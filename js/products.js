@@ -22,7 +22,7 @@ function showProductsList(products) {
                 </div>
                 <div class="col">
                     <div class="d-flex w-100 justify-content-between">
-                        <h4 class="mb-1">${product.name} - ${product.currency} ${product.cost}</h4>
+                        <h4 class="mb-1">${product.name} - ${product.currency} ${Intl.NumberFormat('es-UY').format(product.cost)}</h4>
                         <small class="text-muted">${product.soldCount} artículos</small>
                     </div>
                     <p class="mb-1">${product.description}</p>
