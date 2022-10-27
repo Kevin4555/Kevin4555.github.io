@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Todo lo que busques está aquí</title>
-  
+
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
@@ -17,7 +17,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,7 +26,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link active" href="index.html">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
@@ -34,22 +34,24 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li id="navUser" class="nav-item">
+          <li class="nav-item" id="navUser">
+            
           </li>
         </ul>
       </div>
     </div>
   </nav>
   <main>
-      <div id="logindiv">
-      <img src="img\login.png" alt="login"  height="150">
-                <h2>Inicio de Sesión</h2>
-                <label for="maillogin">Email</label>
-                <input type="email" name="mail" id="maillogin" placeholder="Email"><br>
-                <label for="passwordlogin">Contraseña</label>
-                <input type="password" name="contra" id="passwordlogin" placeholder="Contraseña"><br>
-                <button type="button" id="buttonlogin">Ingresar</button>
-      </div>
+    <div id="logindiv">
+      <img src="img\login.png" alt="login" height="150">
+      <h2>Inicio de Sesión</h2>
+      <label for="maillogin">Email</label>
+      <input type="email" name="mail" id="maillogin" placeholder="Email"><br>
+      <label for="passwordlogin">Contraseña</label>
+      <input type="password" name="contra" id="passwordlogin" placeholder="Contraseña"><br>
+      <button type="button" id="buttonlogin">Ingresar</button>
+      <button type="button" id="googlelogin">Google</button>
+    </div>
   </main>
   <footer class="text-muted">
     <div class="container">
@@ -61,6 +63,56 @@
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
+  <!-- <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth-compat.js"></script>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCsiOG2C2iz-_CeCxORg2FjNLT1A1bflWw",
+      authDomain: "emercado-jap-kevin.firebaseapp.com",
+      projectId: "emercado-jap-kevin",
+      storageBucket: "emercado-jap-kevin.appspot.com",
+      messagingSenderId: "912087754795",
+      appId: "1:912087754795:web:656d100ae40753174b226e"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
+    document.getElementById("googlelogin").addEventListener("click", e => {
+      const provider = new GoogleAuthProvider();
+      const auth = getAuth();
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          // This gives you a Google Access Token. You can use it to access the Google API.
+          const credential = GoogleAuthProvider.credentialFromResult(result);
+          const token = credential.accessToken;
+          // The signed-in user info.
+          const user = result.user;
+          console.log(user);
+          localStorage.setItem("usuario_name", user.email);
+          let carrito = {};
+          localStorage.setItem("cart_user", JSON.stringify(carrito));
+          window.location.href = "index.html";
+        }).catch((error) => {
+          // Handle Errors here.
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // The email of the user's account used.
+          const email = error.customData.email;
+          // The AuthCredential type that was used.
+          const credential = GoogleAuthProvider.credentialFromError(error);
+        });
+    })
+
+  </script> -->
+  <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/login.js"></script>
 </body>
 
