@@ -1,4 +1,5 @@
 let producto;
+let commentsArray;
 
 let btncomprar = document.getElementById("btncomprar");
 
@@ -14,7 +15,7 @@ function Showdata(product) {
         currency = "$"
     }
     //Agrego los datos
-    document.getElementById("precioprod").innerHTML = currency +" "+ Intl.NumberFormat('es-UY').format(product.cost);
+    document.getElementById("precioprod").innerHTML = currency + " " + Intl.NumberFormat('es-UY').format(product.cost);
     document.getElementById("descprod").innerHTML = product.description;
     document.getElementById("categprod").innerHTML = product.category;
     document.getElementById("cantvendprod").innerHTML = product.soldCount;
@@ -52,22 +53,30 @@ function Showdata(product) {
 }
 
 function ShowComments(comments) {
-    document.getElementById("listcomments").innerHTML = "";
-    for (let comment of comments) {
-        let text = `
+    if (comments.length == 0) {
+        document.getElementById("listcomments").innerHTML = `
+    <div class="list-group-item text-center">
+    <h2>Aun no hay comentarios</h2>
+    </div>
+    `;
+    } else {
+        document.getElementById("listcomments").innerHTML = "";
+        for (let comment of comments) {
+            let text = `
         <div class="list-group-item">
         <p><strong>${comment.user}</strong> - ${comment.dateTime} - `;
-        for (let index = 0; index < 5; index++) {
-            if (index < comment.score) {
-                text += `<span class="fa fa-star checked"></span>`;
-            } else
-                text += `<span class="fa fa-star"></span>`;
-        }
-        text += `</p>
+            for (let index = 0; index < 5; index++) {
+                if (index < comment.score) {
+                    text += `<span class="fa fa-star checked"></span>`;
+                } else
+                    text += `<span class="fa fa-star"></span>`;
+            }
+            text += `</p>
         <p>${comment.description}</p>
         </div>
         `;
-        document.getElementById("listcomments").innerHTML += text;
+            document.getElementById("listcomments").innerHTML += text;
+        }
     }
 }
 
@@ -84,13 +93,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }).then(function () {
             getJSONData(PRODUCT_INFO_COMMENTS_URL + localStorage.getItem("productoID") + EXT_TYPE).then(function (resultObj2) {
                 if (resultObj2.status === "ok") {
-                    let commentsArray = resultObj2.data;
-                    if (commentsArray.length == 0) {
-                        document.getElementById("listcomments").innerHTML = `
-                    <div class="list-group-item text-center">
-                    <p>Aun no hay comentarios</p>
-                    </div>
-                    `;
+                    commentsArray = resultObj2.data;
+                    if (localStorage.getItem("comments")) {
+                        let commentslocal = JSON.parse(localStorage.getItem("comments"));
+                        if (commentslocal[localStorage.getItem("productoID")]) {
+                            ShowComments(commentsArray.concat(commentslocal[localStorage.getItem("productoID")]));
+                        } else {
+                            ShowComments(commentsArray);
+                        }
                     } else {
                         ShowComments(commentsArray);
                     }
@@ -98,6 +108,39 @@ document.addEventListener("DOMContentLoaded", function () {
             })
         }).then(function () {
             document.getElementById("btncomment").addEventListener("click", function () {
+                if (localStorage.getItem("usuario_name")) {
+                    if (document.getElementById("textcomment").value != "") {
+                        let hoy = new Date();
+                        let newcomment = {
+                            dateTime: `${hoy.getFullYear()}-${(hoy.getMonth() + 1)}-${hoy.getDate()} ${hoy.getHours()}:${hoy.getMinutes()}:${hoy.getSeconds()}`,
+                            description: document.getElementById("textcomment").value,
+                            product: localStorage.getItem("productoID"),
+                            score: (document.getElementById("scorecommet").selectedIndex + 1),
+                            user: localStorage.getItem("usuario_name")
+                        }
+                        let comments;
+                        if (localStorage.getItem("comments")) {
+                            comments = JSON.parse(localStorage.getItem("comments"));
+                            if (comments[newcomment.product]) {
+                                comments[newcomment.product].push(newcomment);
+                            } else {
+                                comments[newcomment.product] = [];
+                                comments[newcomment.product].push(newcomment);
+                            }
+                            localStorage.setItem("comments", JSON.stringify(comments));
+                        } else {
+                            comments = {}
+                            comments[newcomment.product] = [];
+                            comments[newcomment.product].push(newcomment);
+                            localStorage.setItem("comments", JSON.stringify(comments));
+                        }
+                        ShowComments(commentsArray.concat(comments[newcomment.product]));
+                    } else {
+                        alert("No puede dejar un comentario vacio")
+                    }
+                } else {
+                    alert("Tiene Que iniciar sesion para comentar")
+                }
                 document.getElementById("textcomment").value = "";
                 document.getElementById("scorecommet").selectedIndex = 0;
             })
@@ -111,35 +154,35 @@ document.addEventListener("DOMContentLoaded", function () {
                         btncomprar.innerHTML = `<i class='fas fa-shopping-cart' style='font-size:24px' aria-label="carrito"></i>`;
                     } else {
                         btncomprar.innerHTML = "Comprar";
-                        modalcomp.innerHTML =`
+                        modalcomp.innerHTML = `
                         <input maxlength="3" type="number" name="inputcomprar" value=1 id="comprarinputmodal">
                         <h4 class="float-end bold" id="subtotcom">SubTotal: ${producto.currency} ${Intl.NumberFormat('es-UY').format(producto.cost)}</h4>
                         `;
-                        let inputcom=document.getElementById("comprarinputmodal");
-                        inputcom.addEventListener("input",function(){
+                        let inputcom = document.getElementById("comprarinputmodal");
+                        inputcom.addEventListener("input", function () {
                             if (inputcom.value != "") {
                                 if (inputcom.value < 1) {
                                     inputcom.value = 1;
                                 }
-                                document.getElementById("subtotcom").innerHTML=`SubTotal: ${producto.currency} ${Intl.NumberFormat('es-UY').format(producto.cost*inputcom.value)}`;
+                                document.getElementById("subtotcom").innerHTML = `SubTotal: ${producto.currency} ${Intl.NumberFormat('es-UY').format(producto.cost * inputcom.value)}`;
                             }
                         })
                     }
                     //Boton Comprar que se encarga de modificar el carrito y/o redirigir a cart.html;
-                    btncomprar.addEventListener("click",function(){
-                        if (btncomprar.innerHTML=="Comprar") {
-                            carro[producto.id]={
+                    btncomprar.addEventListener("click", function () {
+                        if (btncomprar.innerHTML == "Comprar") {
+                            carro[producto.id] = {
                                 name: producto.name,
                                 currency: producto.currency,
                                 cost: producto.cost,
                                 cantidad: document.getElementById("comprarinputmodal").value,
                                 imagen: producto.images[0]
                             };
-                            localStorage.setItem("cart_user",JSON.stringify(carro));
-                            window.location="cart.html";
-                        } else{
+                            localStorage.setItem("cart_user", JSON.stringify(carro));
+                            window.location = "cart.html";
+                        } else {
                             //Si ya se habia Comprado Alguno 
-                            window.location="cart.html";
+                            window.location = "cart.html";
                         }
                     })
                 } else {
