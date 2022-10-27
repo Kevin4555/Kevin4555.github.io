@@ -84,6 +84,7 @@ function ShowProductCart(cart) {
             input.addEventListener("input", function () {
                 if (input.value != "") {
                     if (input.value < 1) {
+                        alert("La cantidad tiene que ser almenos 1")
                         input.value = 1;
                     }
                     let textsubtot = Intl.NumberFormat('es-UY').format(cart[input.name].cost * input.value);
