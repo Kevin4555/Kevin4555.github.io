@@ -54,18 +54,22 @@
         </div>
       </div>
       <div class="row">
-        <div class="col input-group">
-          <div class="input-group-text">
-            <i class='fas fa-search'></i>
+        <div class="col-12 col-md-5">
+          <div class="input-group">
+            <div class="input-group-text">
+              <i class='fas fa-search'></i>
+            </div>
+            <input class="form-control" type="search" id="searchProd" placeholder="Busca...">
           </div>
-          <input class="form-control" type="search" id="searchProd" placeholder="Busca...">
         </div>
-        <div class="col input-group">
-          <span class="input-group-text">Precio</span>
-          <input class="form-control" type="number" min="0" placeholder="min." id="filtrominP">
-          <input class="form-control" type="number" min="0" placeholder="máx." id="filtromaxP">
+        <div class="col-12 col-sm-8 col-md-5">
+          <div class="input-group">
+            <span class="input-group-text">Precio</span>
+            <input class="form-control" type="number" min="0" placeholder="min." id="filtrominP">
+            <input class="form-control" type="number" min="0" placeholder="máx." id="filtromaxP">
+          </div>
         </div>
-        <div class="col-2">
+        <div class="col-2 col-sm-2 col-md-1">
           <div class="btn-group" role="group">
             <button class="btn btn-outline-dark" id="filtrarProd">Filtrar</button>
             <button class="btn btn-outline-dark" id="limpiarProd">Limpiar</button>
