@@ -52,8 +52,55 @@
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-10 col-lg-8">
+          <div class="row my-4 justify-content-between">
+          <div class="col-12 col-sm-3">
+            <h1 >Perfil</h1>
+          </div>
+          <div class="col-6 col-sm-2">
+            <img class="img-fluid" src="img\img_perfil.png" alt="img_perfil" id="perfilimg">
+          </div> 
+          </div>
+          <hr>
+          <div class="row" id="inputs">
+            <div class="col-12 col-sm-6 mt-3" id="namediv">
+              <label for="name">Primer nombre*</label>
+              <input type="text" class="form-control" id="name" required>
+              <div class="invalid-feedback">Debe ingresar un nombre.</div>
+            </div>
+            <div class="col-12 col-sm-6 mt-3">
+              <label for="name2">Segundo nombre</label>
+              <input type="text" class="form-control" id="name2">
+              
+            </div>
+            <div class="col-12 col-sm-6 mt-3" id="lastnamediv">
+              <label for="lastname">Primer apellido*</label>
+              <input type="text" class="form-control" id="lastname" required>
+              <div class="invalid-feedback">Debe ingresar un apellido.</div>
+            </div>
+            <div class="col-12 col-sm-6 mt-3">
+              <label for="lastname2">Segundo apellido</label>
+              <input type="text" class="form-control" id="lastname2">
+            </div>
+            <div class="col-12 col-sm-6 mt-3 ">
+              <label for="email">E-mail</label>
+              <input type="email" class="form-control" id="email" value="" disabled>
+            </div>
+            <div class="col-12 col-sm-6 mt-3" id="telcontdiv">
+              <label for="tel_cont">Teléfono de contacto*</label>
+              <input type="number" class="form-control" id="tel_cont" required>
+              <div class="invalid-feedback">Debe ingresar una teléfono de contacto</div>
+            </div>
+            <div class="col-12 col-sm-6 mt-3">
+              <label for="img_per">Imagen de perfil</label>
+              <input type="file" class="form-control" id="img_per" accept="image/png, image/jpeg,image/jpg">
+              <div id="img_per" class="form-text">Los formatos aceptados son .png, .jpeg, .jpg</div>
+            </div>
+            <hr>
+            <button class="btn btn-primary" id="btnguardar">Guardar Cambios</button>
+          </div>
+        </div>
       </div>
     </div>
   </main>
@@ -67,6 +114,12 @@
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
+  <div class="alert alert-danger fade" id="error" role="alert">
+    Hubo algún error
+  </div>
+  <div class="alert alert-success fade" id="success" role="alert">
+      Datos actualizados correctamente
+  </div>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/my-profile.js"></script>
