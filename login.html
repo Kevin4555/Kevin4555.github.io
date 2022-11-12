@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,22 +35,35 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item" id="navUser">
-            
+
           </li>
         </ul>
       </div>
     </div>
   </nav>
   <main>
-    <div id="logindiv">
-      <img src="img\login.png" alt="login" height="150">
-      <h2>Inicio de Sesión</h2>
-      <label for="maillogin">Email</label>
-      <input type="email" name="mail" id="maillogin" placeholder="Email"><br>
-      <label for="passwordlogin">Contraseña</label>
-      <input type="password" name="contra" id="passwordlogin" placeholder="Contraseña"><br>
-      <button type="button" id="buttonlogin">Ingresar</button>
-      <button type="button" id="googlelogin">Google</button>
+    <div class="container text-center ">
+      <form id="formlogin" novalidate>
+
+        <img src="img\login.png" alt="login" height="150">
+        <h2>Inicio de Sesión</h2>
+        <div class="row justify-content-center mt-2">
+          <div class="col-12 col-sm-5">
+            <label for="maillogin">Email</label>
+            <input type="email" name="mail" id="maillogin" placeholder="Email" class="form-control" required>
+            <div class="invalid-feedback">Debe ingresar un mail.</div>
+          </div>
+        </div>
+        <div class="row justify-content-center mt-2">
+          <div class="col-12 col-sm-5">
+            <label for="passwordlogin">Contraseña</label>
+            <input type="password" name="contra" id="passwordlogin" placeholder="Contraseña" class="form-control"
+              required>
+            <div class="invalid-feedback">Debe ingresar una contraseña.</div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Ingresar</button>
+      </form>
     </div>
   </main>
   <footer class="text-muted">
@@ -63,55 +76,6 @@
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
-  <!-- <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth-compat.js"></script>
-  <script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyCsiOG2C2iz-_CeCxORg2FjNLT1A1bflWw",
-      authDomain: "emercado-jap-kevin.firebaseapp.com",
-      projectId: "emercado-jap-kevin",
-      storageBucket: "emercado-jap-kevin.appspot.com",
-      messagingSenderId: "912087754795",
-      appId: "1:912087754795:web:656d100ae40753174b226e"
-    };
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
-    document.getElementById("googlelogin").addEventListener("click", e => {
-      const provider = new GoogleAuthProvider();
-      const auth = getAuth();
-      signInWithPopup(auth, provider)
-        .then((result) => {
-          // This gives you a Google Access Token. You can use it to access the Google API.
-          const credential = GoogleAuthProvider.credentialFromResult(result);
-          const token = credential.accessToken;
-          // The signed-in user info.
-          const user = result.user;
-          console.log(user);
-          localStorage.setItem("usuario_name", user.email);
-          let carrito = {};
-          localStorage.setItem("cart_user", JSON.stringify(carrito));
-          window.location.href = "index.html";
-        }).catch((error) => {
-          // Handle Errors here.
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          // The email of the user's account used.
-          const email = error.customData.email;
-          // The AuthCredential type that was used.
-          const credential = GoogleAuthProvider.credentialFromError(error);
-        });
-    })
-
-  </script> -->
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/login.js"></script>
 </body>
